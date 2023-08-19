@@ -21,6 +21,7 @@ return new class extends Migration
                 ->constrained('users')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
+            $table->string('last_viewed_version');
             $table->timestamps();
         });
     }
