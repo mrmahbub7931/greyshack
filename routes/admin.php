@@ -1,8 +1,10 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\DashboardController;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\DocumentsController;
+use App\Http\Controllers\Admin\DocumentVersionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,5 +39,21 @@ Route::controller(DashboardController::class)
         Route::get('dashboard', 'dashboard')->name('dashboard');
     });
 
+/**
+ * Documents Controller
+ */
+Route::prefix('admin')
+    ->as('app.')
+    ->group(function(){
+        Route::resource('documents', DocumentsController::class);
+    });
 
-
+/**
+ * Documents Version Controller
+ */
+Route::controller(DocumentVersionController::class)
+    ->prefix('admin')
+    ->as('app.docsversion.')
+    ->group(function(){
+        Route::get('docsversion', 'docsversionIndex')->name('index');
+    });
