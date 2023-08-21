@@ -13,16 +13,33 @@
             </tr>
         </thead>
         <tbody>
+            @forelse ($documents->chunk(5) as $documents)
+                @foreach ($documents as $key => $document)
+                    <tr>
+                        <th scope="row">{{$key+1}}</th>
+                        <td>{{ $document->title }}</td>
+                        <td>
+                            {{ $document->current_version }}
+                        </td>
+                        <td>
+                            @if ($document->status == 1)
+                                <button type="button" class="btn btn-subtle-success">Active</button>
+                            @else
+                                <button type="button" class="btn btn-subtle-danger">Inactive</button>
+                            @endif
+                        </td>
+                        <td>
+                            <a href="{{ route('app.documents.edit', $document->id) }}"><button class="btn btn-info">Edit</button></a>
+                            <a href="{{ route('app.documents.destroy', $document->id) }}"><button class="btn btn-danger">Delete</button></a>
+                        </td>
+                    </tr>
+                @endforeach
+            @empty
             <tr>
-                <th scope="row">1</th>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td>
-                    <a href=""><button class="btn btn-info">Edit</button></a>
-                    <a href=""><button class="btn btn-danger">Delete</button></a>
-                </td>
+                <td colspan="5">No docuemnts found!</td>
             </tr>
+            @endforelse
+            
 
         </tbody>
     </table>

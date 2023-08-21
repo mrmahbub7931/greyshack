@@ -46,6 +46,7 @@ Route::prefix('admin')
     ->as('app.')
     ->group(function(){
         Route::resource('documents', DocumentsController::class);
+        // Route::get('/docs/delete/{id}', [DocumentsController::class, 'delete'])->name('documents.delete');
     });
 
 /**
@@ -57,4 +58,7 @@ Route::controller(DocumentVersionController::class)
     ->group(function(){
         Route::get('docsversion', 'docsversionIndex')->name('index');
         Route::get('docsversion/create', 'docsversionCreate')->name('create');
+        Route::post('docsversion/store', 'docsversionStore')->name('store');
+        Route::get('docsversion/edit/{id}', 'docsversionEdit')->name('edit');
+        Route::put('docsversion/update/{id}', 'docsversionUpdate')->name('update');
     });

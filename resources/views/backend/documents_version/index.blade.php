@@ -12,15 +12,25 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <th scope="row">1</th>
-                <td></td>
-                <td></td>
-                <td>
-                    <a href=""><button class="btn btn-info">Edit</button></a>
-                    <a href=""><button class="btn btn-danger">Delete</button></a>
-                </td>
-            </tr>
+            @forelse ($documentVersions->chunk(4) as $documentVersions)
+                @foreach ($documentVersions as $key => $documentVersion)
+                    <tr>
+                        <th scope="row">{{ $key+1 }}</th>
+                        <td>{{ getDocumentTitle($documentVersion->document_id)->title; }}</td>
+                        <td>{{ \Carbon\Carbon::parse($documentVersion->created_at)->diffForHumans() }}</td>
+                        <td>
+                            <a href="{{ route('app.docsversion.edit', $documentVersion->id) }}"><button class="btn btn-info">Edit</button></a>
+                            <a href=""><button class="btn btn-danger">Delete</button></a>
+                        </td>
+                    </tr>
+                @endforeach
+                
+            @empty
+                <tr>
+                    <td colspan="4">No document versions here!</td>
+                </tr>
+            @endforelse
+            
 
         </tbody>
     </table>

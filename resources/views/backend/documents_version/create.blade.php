@@ -10,22 +10,30 @@
                             <h3>Documents Version Create</h3>
                         </div>
                         <div class="card-body">
-                            <form action="javascript:void(0);">
+                            <form action="{{route('app.docsversion.store')}}" method="post">
+                                @csrf
                                 <div class="row">
 
                                     <div class="col-6">
                                         <div class="mb-3">
                                             <label for="ForminputState" class="form-label">Select Documents</label>
-                                            <select id="ForminputState" class="form-select">
-                                                <option selected value="">Active</option>
-                                                <option value="">Inactive</option>
+                                            <select id="ForminputState" class="form-select" name="document_id">
+                                                @forelse ($documents->chunk(4) as $documents)
+                                                    <option selected value="">---</option>
+                                                    @foreach ($documents as $document)
+                                                        <option value="{{ $document->id }}">{{$document->title}}</option>
+                                                    @endforeach
+                                                @empty
+                                                    <option selected value="">No ducments here!</option>
+                                                @endforelse
+                                                
                                             </select>
                                         </div>
                                     </div><!--end col-->
                                     <div class="col-6">
                                         <div class="mb-3">
                                             <label for="version" class="form-label">Version</label>
-                                            <input type="text" class="form-control" placeholder="ex: 1" id="version">
+                                            <input type="text" class="form-control" placeholder="ex: 1" id="version" name="version">
                                         </div>
                                     </div><!--end col-->
 
