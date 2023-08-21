@@ -24,7 +24,7 @@
 
         <!--Swiper slider css-->
         <link href="{{ asset('backend/assets/libs/swiper/swiper-bundle.min.css') }}" rel="stylesheet" type="text/css">
-
+        @stack('css')
         <!-- Layout config Js -->
         <script src="{{ asset('backend/assets/js/layout.js') }}"></script>
         <!-- Bootstrap Css -->
@@ -123,6 +123,7 @@
 
         <!-- App js -->
         <script src="{{ asset('backend/assets/js/app.js') }}"></script>
+        @stack('scripts')
     </body>
 
 

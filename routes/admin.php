@@ -56,4 +56,5 @@ Route::controller(DocumentVersionController::class)
     ->as('app.docsversion.')
     ->group(function(){
         Route::get('docsversion', 'docsversionIndex')->name('index');
+        Route::get('docsversion/create', 'docsversionCreate')->name('create');
     });

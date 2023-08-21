@@ -20,7 +20,7 @@ class DocumentsController extends Controller
      */
     public function create()
     {
-        //
+        return view('backend.documents.create');
     }
 
     /**

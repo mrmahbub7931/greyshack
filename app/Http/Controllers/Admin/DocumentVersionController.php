@@ -11,4 +11,9 @@ class DocumentVersionController extends Controller
     {
         return view('backend.documents_version.index');
     }
+
+    public function docsversionCreate()
+    {
+        return view('backend.documents_version.create');
+    }
 }
