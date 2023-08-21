@@ -1,7 +1,7 @@
 @extends('layouts.backend.master')
 
 @section('content')
-    <a href="{{ route('app.docsversion.create') }}" class=""><button class="btn btn-info my-2">New Document Version</button></a>
+    {{-- <a href="{{ route('app.docsversion.create') }}" class=""><button class="btn btn-info my-2">New Document Version</button></a> --}}
     <table class="table table-bordered">
         <thead>
             <tr>
@@ -24,13 +24,13 @@
                         </td>
                     </tr>
                 @endforeach
-                
+
             @empty
                 <tr>
                     <td colspan="4">No document versions here!</td>
                 </tr>
             @endforelse
-            
+
 
         </tbody>
     </table>
