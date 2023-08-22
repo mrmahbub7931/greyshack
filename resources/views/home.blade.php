@@ -27,14 +27,17 @@
                     <ul>
                         @forelse ($documents->chunk(1) as $documents)
                             @foreach ($documents as $document)
-                                <li><a href="">{{ $document->title }}</a></li>
+                                <li><a href="{{ route('docs.frontend', $document->title) }}">{{ $document->title }}</a></li>
                             @endforeach
                         @empty
                             <li><a href="javascript:void(0)">No title found!</a></li>
                         @endforelse
 
                     </ul>
+                    <hr>
+                    
                 </div>
+
             </div>
         </div>
     </div>

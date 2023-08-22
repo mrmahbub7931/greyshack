@@ -50,7 +50,8 @@ class DocumentsController extends Controller
      */
     public function edit(string $id)
     {
-        $document = Documents::findOrFail($id)->first();
+        
+        $document = Documents::where('id',$id)->first();
         return view('backend.documents.edit', compact('document'));
     }
 

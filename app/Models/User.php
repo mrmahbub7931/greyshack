@@ -42,4 +42,9 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function documents()
+    {
+        return $this->belongsToMany(Documents::class, 'document_users','document_id','user_id');
+    }
 }

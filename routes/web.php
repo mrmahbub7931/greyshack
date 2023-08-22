@@ -25,4 +25,5 @@ Route::controller(HomeController::class)
     ->group(function (){
         Route::get('/home', 'index')->name('home');
         Route::get('/documents/{title}', 'docsDetails')->name('docs.frontend');
+        Route::get('/compare/{docsID}', 'checkDiff')->name('docs.diff');
     });

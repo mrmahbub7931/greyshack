@@ -14,6 +14,12 @@ class Documents extends Model
 
     protected $guarded = ['id'];
 
+
+    public function users()
+    {
+        return $this->belongsToMany(User::class, 'document_users','document_id','user_id');
+    }
+
     /**
      * get all documents data
      */
@@ -76,17 +82,10 @@ class Documents extends Model
     {
         parent::boot();
 
-        // static::updated(function () {
-        //     self::flushCache();
-        // });
-
         static::created(function () {
             self::flushCache();
         });
 
-        // static::deleted(function () {
-        //     self::flushCache();
-        // });
     }
 
 }

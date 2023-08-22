@@ -8,7 +8,6 @@
                 <th scope="col">#</th>
                 <th scope="col">Document Title</th>
                 <th scope="col">Created at</th>
-                <th scope="col">Action</th>
             </tr>
         </thead>
         <tbody>
@@ -18,10 +17,6 @@
                         <th scope="row">{{ $key+1 }}</th>
                         <td>{{ getDocumentTitle($documentVersion->document_id)->title; }}</td>
                         <td>{{ \Carbon\Carbon::parse($documentVersion->created_at)->diffForHumans() }}</td>
-                        <td>
-                            <a href="{{ route('app.docsversion.edit', $documentVersion->id) }}"><button class="btn btn-info">Edit</button></a>
-                            <a href=""><button class="btn btn-danger">Delete</button></a>
-                        </td>
                     </tr>
                 @endforeach
 
